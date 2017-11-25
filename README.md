@@ -29,6 +29,14 @@ ultem@sturdy:~$ echo "YAY" > !$
 echo "YAY" > ~/.local/share/recently-used.xbel
 bash: /home/ultem/.local/share/recently-used.xbel: Operation not permitted
 ```
+
+Downside is that if you start an app via the commandline, it will shout at you.
+```bash
+(transmission-gtk:8014): Gtk-WARNING **: Attempting to store changes into '/home/ultem/.local/share/recently-used.xbel', but failed: Failed to rename file “/home/ultem/.local/share/recently-used.xbel.4FEDAZ” to “/home/ultem/.local/share/recently-used.xbel”: g_rename() failed: Operation not permitted
+
+(transmission-gtk:8014): Gtk-WARNING **: Attempting to set the permissions of '/home/ultem/.local/share/recently-used.xbel', but failed: Operation not permitted
+```
+
 ## Disable LibreOffice Recent Documents
 
 **Problem**: Recent document list including thumbnails of document
