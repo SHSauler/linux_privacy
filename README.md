@@ -66,4 +66,20 @@ CREATE TABLE review_stats (package_name TEXT PRIMARY KEY,one_star_count INTEGER 
 sqlite> select * from review_stats where package_name like "leafpad";
 leafpad|3|3|8|10|39
 ```
+## Transmission saves stats
 
+**Problem:** No big deal, but Transmission saves stats about downloaded and uploaded files in `/home/<user>/.config/transmission/stats.json`. 
+
+Setting all to zero and making the file unwritable seems to work.
+
+```
+ultem@sturdy:~/.config/transmission$ cat stats.json 
+{
+    "downloaded-bytes": 0,
+    "files-added": 0,
+    "seconds-active": 0,
+    "session-count": 0,
+    "uploaded-bytes": 0
+}
+ultem@sturdy:~/.config/transmission$ sudo chattr +i stats.json 
+```
