@@ -46,3 +46,8 @@ Disable view of recent docs
 <item oor:path="/org.openoffice.Office.Common/History"><prop oor:name="PickListSize" oor:op="fuse"><value>0</value></prop></item>
 ```
 Afterward, opening documents will not create new `PickList` entries.
+
+## Geany recently used
+**Problem**: Text editor Geany uses file `/home/<user>/.config/geany/geany.conf` to store 10 (default) recently used files in `[files] recent_files=`.
+
+Disable by adding `mru_length=0` to `/home/<user>/.config/geany/geany.conf`'s `[geany]` section. Existing recent file entries are removed.
