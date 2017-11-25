@@ -51,3 +51,19 @@ Afterward, opening documents will not create new `PickList` entries.
 **Problem**: Text editor Geany uses file `/home/<user>/.config/geany/geany.conf` to store 10 (default) recently used files in `[files] recent_files=`.
 
 Disable by adding `mru_length=0` to `/home/<user>/.config/geany/geany.conf`'s `[geany]` section. Existing recent file entries are removed.
+
+## Reviews betray software installed
+
+On Ubuntu-based distros, there's file `/home/<user>/.local/share/gnome-software/ubuntu-reviews.db`, a sqlite3 database that contains the user's reviews of software. 
+
+It contains removed software packages as well. In my case `leafpad`.
+
+```
+sqlite> .tables
+review_stats  reviews       timestamps  
+sqlite> .schema review_stats
+CREATE TABLE review_stats (package_name TEXT PRIMARY KEY,one_star_count INTEGER DEFAULT 0,two_star_count INTEGER DEFAULT 0,three_star_count INTEGER DEFAULT 0,four_star_count INTEGER DEFAULT 0,five_star_count INTEGER DEFAULT 0);
+sqlite> select * from review_stats where package_name like "leafpad";
+leafpad|3|3|8|10|39
+```
+
